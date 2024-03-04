@@ -1,0 +1,16 @@
+const express=require('express');
+const router=express.Router();
+
+const rentedController=require('../controller/rentedController');
+
+router.route('/')
+      .get(rentedController.rentedBooks)
+
+router.route('/:id')
+      .get(rentedController.rentedBook)
+
+router.route('/rentBook')
+      .post(rentedController.rentBook)
+      
+      
+module.exports=router;      
