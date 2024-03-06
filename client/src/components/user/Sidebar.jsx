@@ -18,7 +18,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import '../../index.css'
 import { Link } from 'react-router-dom';
-import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
+
 
 
 const drawerWidth = 200;
@@ -36,10 +36,6 @@ function Sidebar() {
    page:'Rented Books',
    link:'/Rented'
   },
-  {
-    page:'Review',
-    link:'/review'
-   },
    {
     page: 'Profile',
     link:'/profile'
@@ -59,14 +55,19 @@ function Sidebar() {
   
       <Toolbar/>
       <List>
+        
         {listData.map((val, i) => (
+          
           <ListItem key={i} >
             <Link to={val.link} className='side-link' >
             <ListItemButton className='side-text'>
               <ListItemText primary={val.page} />
+              
             </ListItemButton>
+            <Divider style={{lineHeight:'100%'}}/>
             </Link>
           </ListItem>
+        
         ))}
       </List>
       

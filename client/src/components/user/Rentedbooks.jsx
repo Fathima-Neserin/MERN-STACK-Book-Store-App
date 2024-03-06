@@ -12,7 +12,7 @@ const Rentedbooks = () => {
    const [rented,setRented] = useState([]);
 
    useEffect(()=>{
-       axios.get('http://localhost:3001/rented').then((res)=>{
+       axios.get('http://localhost:3001/ReNtEd').then((res)=>{
          setRented(res.data);
        })
    },[])

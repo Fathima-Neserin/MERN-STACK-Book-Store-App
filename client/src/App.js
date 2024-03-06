@@ -8,7 +8,6 @@ import Unique from './elements/Unique';
 import Dashboard from './components/user/Dashboard';
 import Profile from './components/user/Profile';
 import Rentbook from './components/user/Rentbook';
-import Review from './components/user/Review';
 import Rentedbooks from './components/user/Rentedbooks';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
        <Route path ='/unique/:id' element={<Unique/>}/>
        <Route path='/userdash' element={<Dashboard/>}/>
        <Route path='/rent' element={<Rentbook/>}/>
-       <Route path='/review' element={<Review/>}/>
        <Route path='/profile' element={<Profile/>}/>
        <Route path='/Rented' element={<Rentedbooks/>}/>
       

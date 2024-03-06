@@ -9,7 +9,7 @@ router.route('/')
 router.route('/:id')
       .get(rentedController.rentedBook)
 
-router.route('/rentBook')
+router.route('/rentBook/:id')
       .post(rentedController.rentBook)
       
       

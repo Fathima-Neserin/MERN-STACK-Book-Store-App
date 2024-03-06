@@ -12,9 +12,9 @@ const Rentbook = (props) => {
 
 
  const [form,setForm]=useState({
-  title:props.data.title || '',
-  author:props.data.author || '',
-  image:props.data.image || '',
+  title:props?.data?.title || '',
+  author:props?.data?.author || '',
+  image:props?.data?.image || '',
   libraryId:'',
   userName:'',
   contactNo:''
@@ -26,29 +26,27 @@ useEffect(() => {
       bookRef.current.focus();
 },[])
 
-const rentHandle = () => {
+const rentHandle = async(e) => {
+   e.preventDefault();
 
-  if(props.method==="post"){
-    axios.post("http://localhost:3001/rented/rentBook/"+props.data._id,form,{
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin":"http://localhost:3000"
-      }
-    })
-    .then((res)=>{
-      console.log(res.data);
-      if(res.data.message==="Book rented"){
-      alert(res.data.message);
-      window.location.reload(false)  
-      }else{
+    console.log('bookId', props.data._id);
+
+    if(props.method==="post"){
+       await axios.post(`http://localhost:3001/ReNtEd/rentBook/${props.data._id}`,form)
+      .then((res)=>{
+        if(res.data.message==="Book rented"){
+        alert(res.data.message)
+      window.location.reload(false)
+         } else{
         alert("Renting request failed")
       }
     })
     .catch((error)=>{
-      console.error('Error during POST request', error);
+        console.error(error)
     })
-  }
-}
+      }}
+    
+
   return (
     <div>
         <Sidebar/>

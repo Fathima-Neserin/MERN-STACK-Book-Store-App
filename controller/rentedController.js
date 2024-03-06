@@ -34,6 +34,8 @@ const rentedBook = async (req,res) => {
 
 const rentBook = async(req,res) => {
 
+    const bookId = req.params.id; 
+
     if(!req?.body?.title){
         return res.status(400).json({"message": "title is required"})
     }
@@ -43,6 +45,7 @@ const rentBook = async(req,res) => {
             image:req.body.image,
             title: req.body.title,
             author: req.body.author,
+            bookId: bookId
         })
         res.status(200).json({"message":"Book rented"})
     } catch (error) {

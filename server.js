@@ -52,7 +52,7 @@ app.use(morgan('dev'));
 app.use('/books',bookRoutes);
 app.use('/user',userRoutes);
 app.use('/auth',authRoutes);
-app.use('/rented',rentedRoutes);
+app.use('/ReNtEd',rentedRoutes);
 
 // DB connection
 

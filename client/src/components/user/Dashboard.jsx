@@ -7,14 +7,26 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Sidebar from './Sidebar'
 import axios from "axios";
-import { Grid } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import Rentbook from "./Rentbook";
-import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 
 const Dashboard = () => {
+
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   const [bookdata, setBook] = useState([]);
+  
   const [rent, setRent] =useState(false);
   const [singleValue,setSingleValue] = useState([]);
 
@@ -61,25 +73,54 @@ const Dashboard = () => {
         <Typography >
           Genre : {val.genre}
         </Typography><br/>
-        <Typography >
-          Reviews :
-        </Typography><br/>
+       
         <Typography >
           Status : {val.status}
         </Typography><br/>
         <Typography>
           Pay(late fee) : {val.pay}
         </Typography><br/>
+        <div>
+        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}  sx={{ backgroundColor: ' rgba(226, 252, 252, 0.911)'}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          >
+        
+           <Typography>Reviews</Typography>
+         </AccordionSummary>
+         <AccordionDetails>
+          
+          <div>
+    {val.reviews.map((review, index) => (
+      <div key={index} className="review-container">
+        <div className="profile-info">
+          <br/>
+          <img src={review.profilePicture} alt="Profile" className="profiles" />
+          <br/>
+          <span>{review.email}</span>
+        </div><br/>
+        <div>{review.reviewText}</div>
+        <Divider/>
+      </div>
+      
+    ))}
+  </div>
+  
+
+        </AccordionDetails>
+      </Accordion>
+     
+       </div>
       </CardContent>
       <CardActions>
        <Button id="btn1"onClick={()=>rentBook(val)} >Rent</Button>
-        <Button id="btn1">Review</Button>
       </CardActions>
       
       </div>
       
     </Card>
     </Grid>
+    
     
     ))}
     </Grid>

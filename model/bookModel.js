@@ -1,5 +1,19 @@
 const mongoose=require('mongoose');
 
+const reviewSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+    },
+    profilePicture: {
+        type: String,
+    },
+    reviewText: {
+        type: String,
+        required: true,
+    },
+});
+
 const bookModel = new mongoose.Schema({
 
      image : {
@@ -26,9 +40,7 @@ const bookModel = new mongoose.Schema({
         type : Number,
         required : true
     },
-    reviews : [{
-        type : String
-    }],
+    reviews : [reviewSchema],
     status : {
         type : String
     },
