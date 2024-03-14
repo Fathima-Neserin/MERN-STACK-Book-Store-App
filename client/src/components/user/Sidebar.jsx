@@ -17,13 +17,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import '../../index.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 const drawerWidth = 200;
 
+
 function Sidebar() {
+
+  const navigate = useNavigate();
+
   const listData = [{
     page:'Dashboard',
     link:'/userdash'
@@ -42,12 +46,17 @@ function Sidebar() {
     },
     {
     page: 'Logout',
-    link: '/login'
+    // link: '/login'
 }];
   
+const handleLogout = () => {
+  
+  sessionStorage.removeItem('Token');
+  sessionStorage.removeItem('ID');
+  // Redirect to login page
+    navigate('/login');
 
-
- 
+}
 
   const drawer = (
     <div className='drawer'>
@@ -60,7 +69,7 @@ function Sidebar() {
           
           <ListItem key={i} >
             <Link to={val.link} className='side-link' >
-            <ListItemButton className='side-text'>
+            <ListItemButton className='side-text' onClick={val.page === 'Logout' ? handleLogout : null}>
               <ListItemText primary={val.page} />
               
             </ListItemButton>
