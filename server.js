@@ -36,14 +36,14 @@ app.use(morgan('dev'));
 
 //  built-in middleware to handle urlencoded form data
 
- app.use(express.urlencoded({extended:true}))
+ app.use(express.urlencoded({extended:false}))
 
- app.use(bodyParser.json());
+  app.use(bodyParser.json());
 
- app.use(bodyParser.urlencoded({ extended: true }));
+//   app.use(bodyParser.urlencoded({ extended: false }));
 
 
-// middleware
+
 
 
 

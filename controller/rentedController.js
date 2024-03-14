@@ -52,9 +52,48 @@ const rentBook = async(req,res) => {
         res.status(500).json({error:error.message})
     }
 }
+const reviewBook = async (req, res) => {
+    const bookId = req.params.id.trim();
+
+    if (!bookId) {
+        return res.status(400).json({ "message": "Book ID required" });
+    }
+
+    try {
+        const book = await RentedBooks.findByIdAndUpdate(bookId);
+
+        if (!book) {
+            return res.status(404).json({ "message": "Book not found" });
+        }
+
+        book.reviews = book.reviews || [];
+
+        const { reviewText, email } = req.body;
+
+        if (!reviewText || !email) {
+            return res.status(400).json({ "message": "Review text and email are required" });
+        }
+
+        const newReview = {
+            reviewText,
+            email,
+        };
+
+        book.reviews.push(newReview);
+
+        // Save the updated book with the new review
+        await book.save();
+
+        res.status(200).json({ "message": "Review added" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 
 module.exports={
     rentedBooks,
     rentedBook,
-    rentBook
+    rentBook,
+    reviewBook
 }

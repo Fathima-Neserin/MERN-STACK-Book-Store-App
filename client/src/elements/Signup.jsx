@@ -178,9 +178,10 @@ const Signup = () => {
         label='Role' 
         required 
         type='search'
-        onChange={changeHandler}
+        // onChange={changeHandler}
         value={details.role}
         name='role'
+        
         >
         
         </TextField>

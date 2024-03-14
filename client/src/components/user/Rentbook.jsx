@@ -3,6 +3,8 @@ import { Typography , Grid, TextField , Button} from '@mui/material'
 import Sidebar from './Sidebar'
 import axios from 'axios';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
 
 
 
@@ -43,23 +45,20 @@ const rentHandle = async(e) => {
     })
     .catch((error)=>{
         console.error(error)
+        alert(error)
     })
       }}
     
 
   return (
-    <div>
-        <Sidebar/>
-
-        <div className='App'>
-    <br/>
-
-    <Typography variant='h3' className='head2' >Rent Book</Typography>
+    <div className='App'>
+      
+    <Typography variant='h3' className='head5' >Rent Book</Typography>
     <br></br>
     <div className='styleform'>
   
     <Grid container spacing={2}>
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item xs={12} sm={12} md={12}>
         <TextField 
         variant='standard' 
         fullWidth 
@@ -73,7 +72,7 @@ const rentHandle = async(e) => {
          inputRef={bookRef}
         />
         </Grid>
-        <Grid item xs={12} sm={6} md={6}>
+        <Grid item xs={12} sm={12} md={12}>
         <TextField 
         variant='standard' 
         fullWidth 
@@ -88,16 +87,21 @@ const rentHandle = async(e) => {
         </Grid>
         
         <Grid item xs={12} sm={12} md={12}>
-        <TextField 
-        variant='standard' 
-        fullWidth 
-        label='Book Address' 
-        required 
-        type='text'
-        onChange={(e) => {
-        setForm({...form,image:e.target.value})}}
-        value={form.image}
-        />
+        <Card  sx={{ width: '25%' }}>
+       
+       <CardMedia 
+        component="img"
+         sx={{ height: '8%' }}
+         image={form.image}
+         onChange={(e) => {
+           setForm({...form,image:e.target.value})
+          }}
+          
+          value={form.image}
+          
+       />
+       </Card>
+       <br/>
         </Grid>  
         <Grid item xs={12} sm={12} md={12}>
         <TextField 
@@ -146,7 +150,7 @@ const rentHandle = async(e) => {
           </Grid>
           </div>
           </div>
-    </div>
+    
   )
 }
 

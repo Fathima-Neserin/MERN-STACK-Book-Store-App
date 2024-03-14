@@ -6,10 +6,13 @@ const { promisify } = require('util');
 const compareAsync = promisify(bcrypt.compare);
 
 const handleLogin = async (req, res) => {
+   
   try {
+    
     const { username, pwd } = req.body;
     const user = await Users.findOne({ username });
-
+    const id = user._id.toString();
+    const role = user.role;
     if (!user) {
       return res.status(404).send('User not found!!!');
     }
@@ -28,12 +31,14 @@ const handleLogin = async (req, res) => {
     if (!result) {
       return res.status(401).send('Wrong Password');
     }
+    
+    let privatekey={username:username,password:pwd}
 
-    const token = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN);
+    const token = jwt.sign({ username: user.username,pwd:user.password,id:id }, process.env.ACCESS_TOKEN);
 
-    console.log('Token:', token);
+    console.log('Token:', token, "username:",username,"id:", id);
 
-    return res.status(201).send({ user, token });
+    return res.status(201).send({ username,pwd, id, token , role});
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error!!!');

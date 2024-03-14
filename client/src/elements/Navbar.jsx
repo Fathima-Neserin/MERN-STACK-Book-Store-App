@@ -16,7 +16,7 @@ const Navbar = () => {
     <AppBar id='navbar'>
          
         <Toolbar>
-          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGLKnUVOBWTOIso0v502T5gHD7w4J3oRuZmQ&usqp=CAU' className='img1'/>
+          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpP-Mao5HTWUpOoOufeh-LzT8P_4GZN3n_j4OcGeCIQQ&s' className='img1'/>
           
           <Typography variant="h4" id='head'>
             Book Store App

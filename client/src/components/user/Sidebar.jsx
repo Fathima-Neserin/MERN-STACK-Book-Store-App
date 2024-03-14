@@ -38,7 +38,7 @@ function Sidebar() {
   },
    {
     page: 'Profile',
-    link:'/profile'
+    link:'/profile/:id'
     },
     {
     page: 'Logout',
@@ -51,7 +51,7 @@ function Sidebar() {
 
   const drawer = (
     <div className='drawer'>
-      <img src='https://static.vecteezy.com/system/resources/thumbnails/008/147/482/small/modern-bookstore-logo-design-illustration-vector.jpg' className='img3'/>
+      <img src='https://img.freepik.com/free-vector/flat-design-library-logo-template_23-2149325326.jpg' className='img3'/>
   
       <Toolbar/>
       <List>
@@ -64,7 +64,7 @@ function Sidebar() {
               <ListItemText primary={val.page} />
               
             </ListItemButton>
-            <Divider style={{lineHeight:'100%'}}/>
+          
             </Link>
           </ListItem>
         

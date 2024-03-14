@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -7,41 +7,83 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
-
-
-
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Editprofile from './Editprofile';
 
 
 const  Profile = () => {
-  return (
+
+  const [update, setUpdate] =useState(false);
+  const [singleValue,setSingleValue] = useState([]);
+
+
+  const [user,setUser] = useState({});
+  const id = sessionStorage.getItem('ID');
+
+  useEffect(()=>{
+
+    axios.get(`http://localhost:3001/user/${id}`).then((res)=>{
+      console.log(res.data);
+      setUser(res.data);
+    })
+    .catch((error) => {
+      console.error('Error fetching user data:', error);
+    });
+  },[id])
+
+  
+  const updateProfile = (val) => {
+    console.log("update clicked",val);
+    setUpdate(true);
+    setSingleValue(val);
+ 
+  }
+
+  let finalJSX = (
     <>
-    <div>
-        <Sidebar/>
-        </div>
+    
         <div className='profile'>
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ width: 350 }}>
           
       <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        sx={{ height: 320 }}
+        image="https://i.pinimg.com/originals/ac/11/aa/ac11aa2add3b0193c8769e0a17d13535.jpg"
+        
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        <Typography gutterBottom variant="h5">
+          Name : {user.person}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        <br/>
+        <Typography >
+          Email : {user.email}
         </Typography>
+        <br/>
+        <Typography >
+          Mobile Number : {user.contact}
+        </Typography>
+        <br/>
+        <Typography >
+          Username : {user.username}
+        </Typography>
+        <br/>
+       
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button  id='btn1'  onClick={() => updateProfile(user)}>Edit your profile</Button>
       </CardActions>
     </Card>
         </div>
         </>
+  )
+  if(update) finalJSX= <Editprofile method="put" data={singleValue}/>
+  return(
+
+
+    finalJSX
+
+
   )
 }
 

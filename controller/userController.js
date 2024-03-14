@@ -21,6 +21,34 @@ const getAllUsers = asyncHandler(async (req, res) => {
     res.json(users)
 })
 
+
+const getOneUser = async (req,res) => {
+    const id=req.params.id
+   
+    if(!id){
+        
+
+        return res.status(400).json({"message": "User ID requied"})
+    }
+    try {
+      
+
+        const user= await Users.findById(id).exec();
+        console.log(user)
+        if(!user){
+         return res.status(204).json({"message": `No user matches ID ${id}`})   
+        }
+       
+         res.json(user);
+    } catch (error) {
+        console.error("An error occurred while fetching user data:", error);
+
+        res.status(500).json({error:error.message})
+        console.error(error)
+    }
+}
+
+
 const createNewUser = asyncHandler(async (req,res) => {
    const { person,email,contact,username,password,role} = req.body;
 
@@ -42,16 +70,36 @@ const createNewUser = asyncHandler(async (req,res) => {
    const userObject = { person , email , contact , username, "password": hashedPwd, role }
 
    // Create and store new user 
-   const user = await Users.create(userObject)
-   console.log(user)
-   if (user) { //created 
+   const  newUser = await Users.create(userObject)
+   console.log(newUser)
+   if (newUser) { //created 
        res.status(201).json({ message: `New user ${username} added` })
-       await user.save()
+       await newUser.save()
    } else {
        res.status(400).json({ message: 'Invalid user data received' })
    }
 })
+
+const editUser = asyncHandler( async(req, res) => {
+    if(!req?.params?.id){
+        return res.status(400).json({'message': 'ID parameter is required'});
+    }
+    try {
+        const id = req.params.id;
+        const updateUser = await Users.findById(id);
+        if(!updateUser){
+            return res.status(204).json({'message': `No user matches ID ${req.params.id}`});
+        }
+        const updatedUser = await Users.findByIdAndUpdate(id, req.body, {new:true});
+        res.status(200).json({'message': 'User updated successfully'})
+        
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
 module.exports={
     getAllUsers,
-    createNewUser
+    getOneUser,
+    createNewUser,
+    editUser
 }

@@ -4,7 +4,6 @@ import { TextField, Typography } from '@mui/material'
 import '../index.css'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 
 
 const Unique = () => {

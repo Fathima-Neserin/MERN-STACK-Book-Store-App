@@ -5,9 +5,6 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    profilePicture: {
-        type: String,
-    },
     reviewText: {
         type: String,
         required: true,

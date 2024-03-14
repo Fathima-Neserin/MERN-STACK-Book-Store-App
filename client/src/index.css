@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(226, 252, 252, 0.911);
+  background-color: rgb(245, 248, 248);
 }
 
 code {
@@ -14,7 +14,7 @@ code {
 }
 
 #navbar{
-  background-color: rgb(4, 86, 79);
+  background-color: rgb(14, 2, 80);
   height: 100px;
 
 }
@@ -35,7 +35,7 @@ code {
 
 .link:hover{
   background-color: azure;
-  color: rgb(4, 86, 79);
+  color: rgb(14, 2, 80);
 
 }
 
@@ -84,14 +84,14 @@ code {
 }
 
 #btn{
-  background-color:  rgb(12, 95, 88);
+  background-color:  rgb(14, 2, 80);
   color: rgb(254, 255, 254);
   text-decoration: none;
 }
 
 #btn:hover{
    background-color: rgb(254, 255, 254);
-   color: rgb(12, 95, 88);
+   color: rgb(14, 2, 80);
 }
 
 .custom-imglist {
@@ -123,7 +123,7 @@ code {
 }
 
 .navbar{
-  background-color: rgb(4, 86, 79);
+  background-color: rgb(14, 2, 80);
   height: 140px;
   width: auto;
   overflow: hidden;
@@ -145,19 +145,19 @@ code {
 
 .side-link{
   text-decoration: none;
-  color: rgb(254, 255, 254);
+  color: rgb(14, 2, 80);
   overflow: hidden;
   
 }
 
 
 .side-link:hover{
-  background-color: rgb(254, 255, 254);
-  color: rgb(12, 95, 88);
+  background-color: rgb(14, 2, 80);
+  color: azure;
 }
 
 .drawer{
-  background-color: rgb(12, 95, 88);
+  background-color: aliceblue;
   height:  100%;
  
 }
@@ -183,32 +183,81 @@ code {
   margin-top: 15%;
   margin-left: 22%;
   color: rgb(4, 27, 25);
-  background-color:  rgba(16, 123, 123, 0.911);
+  background-color:  rgb(14, 2, 80);
   float: right !important;
 }
 .card-content{
   color: rgb(4, 27, 25);
-  background-color:  rgba(226, 252, 252, 0.911);
 }
 .card-margin{
-  padding-left: 9%;
+  padding-left: 15%;
+}
+
+.card2{
+  margin-left: 0%;
+}
+.card2-margin{
+  padding: 3%;
+  display: 'flex';
+  flex-wrap: 'wrap';
+  justify-content: 'space-between';
 }
 
 #btn1{
-  color: rgb(12, 95, 88);
+  color: rgb(14, 2, 80);
+  text-decoration: none;
 }
 #btn1:hover{
   color: rgb(254, 255, 254);
-  background-color: rgb(12, 95, 88);
+  background-color: rgb(14, 2, 80);
 }
 
 .profile{
-  margin: 10% 40%;
+  margin: 2% 36%;
 }
 
 .profiles{
   width: 40%;
 }
 
+.review{
+  margin-left: 3%;
+  margin-top: 2%;
+  padding: 2%; 
+  width: 200%;
+  
+}
 
- 
+.review-container {
+  display: flex;
+}
+
+.review-component {
+  
+  margin: 5%; 
+  flex: auto;
+}
+
+
+.rented-component {
+  float: right;
+  display: flex;
+  margin: 0% 0% 5% 16%; 
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: row; 
+}
+
+.profile-setup {
+  margin: 3%;
+  width:45%;
+  padding: 5%;
+
+}
+
+.profile-component {
+  margin: 12% ;
+  
+}

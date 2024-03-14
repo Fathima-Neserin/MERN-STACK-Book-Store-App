@@ -9,6 +9,8 @@ import Dashboard from './components/user/Dashboard';
 import Profile from './components/user/Profile';
 import Rentbook from './components/user/Rentbook';
 import Rentedbooks from './components/user/Rentedbooks';
+import Review from './components/user/Review';
+import Editprofile from './components/user/Editprofile';
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
        <Route path ='/unique/:id' element={<Unique/>}/>
        <Route path='/userdash' element={<Dashboard/>}/>
        <Route path='/rent' element={<Rentbook/>}/>
-       <Route path='/profile' element={<Profile/>}/>
+       <Route path='/profile/:id' element={<Profile/>}/>
        <Route path='/Rented' element={<Rentedbooks/>}/>
+       <Route path='/review' element={<Review/>}/>
+       <Route path='/editProfile' element={<Editprofile/>}/>
       
     </Routes>
     </div>

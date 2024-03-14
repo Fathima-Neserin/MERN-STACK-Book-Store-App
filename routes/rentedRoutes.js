@@ -12,5 +12,8 @@ router.route('/:id')
 router.route('/rentBook/:id')
       .post(rentedController.rentBook)
       
+router.route('/addReview/:id')
+      .put(rentedController.reviewBook)    
+      
       
 module.exports=router;      

@@ -46,7 +46,9 @@ const Dashboard = () => {
   let finalJSX = (
     <>
       <Sidebar />
+
       <div id="welcome">
+        <div></div>
         <Typography>
           <b>"Welcome </b> to our Book Store App – your literary sanctuary in the digital realm!<br/> Immerse yourself in a world of captivating stories, explore diverse genres, and embark on literary journeys that transcend pages. Discover, read, and share your favorite tales seamlessly.<br/> Happy reading!"
         </Typography>
@@ -55,18 +57,22 @@ const Dashboard = () => {
       <Grid container >
       {bookdata.map((val,i)=>(
         <Grid item key={i} md={3}>
-      <Card key={i} sx={{ width: '75%' }} className="card">
-       
+      <Card key={i} sx={{ width: '75%' , height:'100%' }} className="card2">
+
+       <Button onClick={()=>rentBook(val)} >
       <CardMedia 
        component="img"
-        sx={{ height: '30%' }}
+        sx={{ height: '45vh' }}
         image={val.image}
       />
+      </Button>
       <div className="card-content">
       <CardContent> 
-        <Typography gutterBottom variant="h6" component="div">
+      <div style={{ maxHeight: '6em', overflow: 'hidden' }}>
+        <Typography gutterBottom variant="h6" component="div" >
           Name : {val.title}
         </Typography>
+        </div><br/>
         <Typography>
           Author : {val.author}
         </Typography><br/>
@@ -81,7 +87,7 @@ const Dashboard = () => {
           Pay(late fee) : {val.pay}
         </Typography><br/>
         <div>
-        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}  sx={{ backgroundColor: ' rgba(226, 252, 252, 0.911)'}}>
+        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           >
@@ -92,18 +98,16 @@ const Dashboard = () => {
           
           <div>
     {val.reviews.map((review, index) => (
-      <div key={index} className="review-container">
-        <div className="profile-info">
-          <br/>
-          <img src={review.profilePicture} alt="Profile" className="profiles" />
-          <br/>
-          <span>{review.email}</span>
+      <div key={index} >
+       <div>
+          <span><h5>{review.email}</h5></span>
         </div><br/>
         <div>{review.reviewText}</div>
         <Divider/>
       </div>
       
     ))}
+  
   </div>
   
 
@@ -112,9 +116,6 @@ const Dashboard = () => {
      
        </div>
       </CardContent>
-      <CardActions>
-       <Button id="btn1"onClick={()=>rentBook(val)} >Rent</Button>
-      </CardActions>
       
       </div>
       
@@ -125,6 +126,7 @@ const Dashboard = () => {
     ))}
     </Grid>
     </div>
+    <br/>
     </>
   );
   if(rent) finalJSX= <Rentbook method="post" data={singleValue}/>
