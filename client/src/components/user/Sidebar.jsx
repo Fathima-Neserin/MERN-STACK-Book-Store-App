@@ -16,9 +16,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { Divider, ListItemIcon } from '@mui/material';
 
 
-
 const drawerWidth = 200;
-
 
 function Sidebar() {
 
@@ -74,27 +72,14 @@ const handleLogout = () => {
             <ListItemButton className='side-text' onClick={val.page === 'Logout' ? handleLogout : null}>
               <ListItemIcon>{val.icon}</ListItemIcon>
               <ListItemText primary={val.page} />
-              
-              
             </ListItemButton>
-            
             <Divider style={{ height: 'calc(100% - 56px)', minWidth:'100%', marginTop: 'auto' }} />
             </Link>
           </ListItem>
-      
-        
-        ))}
+      ))}
       </List>
-      
-      
-      
-      
-     
     </div>
   );
-
-  
-
   return (
     <div className='container'>
     
@@ -103,7 +88,6 @@ const handleLogout = () => {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-       
         <Drawer
           variant="permanent"
           sx={{
@@ -116,12 +100,6 @@ const handleLogout = () => {
           {drawer}
         </Drawer>
         </Box>
-        
-        </div>
-      
-  )
-        }
-        
-       
-
+         </div>
+)}
 export default Sidebar;

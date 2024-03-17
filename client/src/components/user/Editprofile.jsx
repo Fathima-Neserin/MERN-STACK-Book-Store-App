@@ -4,9 +4,9 @@ import { Button,  Grid } from "@mui/material";
 import Profile from './Profile'
 import axios from 'axios';
 
+
 const Editprofile = (props) => {
 
-    
     const [details,setDetails]=useState({
     person:props?.data?.person || '',
     email:props?.data?.email || '',
@@ -15,12 +15,11 @@ const Editprofile = (props) => {
     
   })
 
-  
   const updateHandle = async(e) => {
     e.preventDefault();
  
      if(props.method==="put"){
-        await axios.put(`http://localhost:3001/user/editUser/${props.data._id}`,details)
+        await axios.put(`/user/editUser/${props.data._id}`,details)
        .then((res)=>{
          if(res.data.message==="User updated successfully"){
          alert(res.data.message)
@@ -92,20 +91,14 @@ const Editprofile = (props) => {
        
         <Button id='btn1' onClick={updateHandle}>Update</Button>
         
-        
         </div>
-        
         
   <Grid item xs={6}>
   <div className='profile-component'>
         <Profile/>
-    
-  
    </div>
    </Grid>
    </div>
     </>
-  )
-}
-
+  )}
 export default Editprofile

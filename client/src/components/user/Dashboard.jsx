@@ -14,7 +14,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-
 const Dashboard = () => {
 
   const [expanded, setExpanded] = React.useState(false);
@@ -29,7 +28,7 @@ const Dashboard = () => {
   const [singleValue,setSingleValue] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/books').then((res) => {
+    axios.get('/books').then((res) => {
       setBook(res.data);
     });
   }, []);
@@ -108,7 +107,6 @@ const Dashboard = () => {
   
   </div>
   
-
         </AccordionDetails>
       </Accordion>
      
@@ -134,7 +132,5 @@ const Dashboard = () => {
     finalJSX
 
 
-  )
-}
-
+  )}
 export default Dashboard;

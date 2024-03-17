@@ -12,15 +12,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Review from './Review';
 
 
-
-
 const Rentedbooks = () => {
    
   const [review, setReview] =useState(false);
   const [singleValue,setSingleValue] = useState([]);
 
    const [rented,setRented] = useState([]);
-
    
   const [expanded, setExpanded] = React.useState(false);
 
@@ -30,9 +27,8 @@ const Rentedbooks = () => {
     setExpanded(isExpanded ? panel : false);
   };
 
-
    useEffect(()=>{
-       axios.get(`http://localhost:3001/ReNtEd/${userName}`).then((res)=>{
+       axios.get(`/ReNtEd/${userName}`).then((res)=>{
         console.log("Rented Data:", rented);
         console.log('Response from server:', res.data);
 
@@ -44,7 +40,6 @@ const Rentedbooks = () => {
     console.log("review clicked",val);
     setReview(true);
     setSingleValue(val);
- 
   }
 
   let finalJSX=(
@@ -88,8 +83,6 @@ const Rentedbooks = () => {
     ))}
   
   </div>
-  
-
         </AccordionDetails>
       </Accordion>
      
@@ -119,7 +112,5 @@ const Rentedbooks = () => {
     finalJSX
 
 
-  )
-}
-
+  )}
 export default Rentedbooks

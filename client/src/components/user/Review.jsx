@@ -7,8 +7,6 @@ import { Button, Grid } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
 
-
-
 const Review = (props) => {
 
   const [fields,setFields]=useState({
@@ -25,7 +23,7 @@ const Review = (props) => {
      console.log('bookId', props.data._id);
  
      if(props.method==="put"){
-        await axios.put(`http://localhost:3001/ReNtEd/addReview/${props.data._id}`,fields)
+        await axios.put(`/ReNtEd/addReview/${props.data._id}`,fields)
        .then((res)=>{
          if(res.data.message==="Review added"){
          alert(res.data.message)
@@ -42,9 +40,7 @@ const Review = (props) => {
   return (
    <div className='review-container'>
       
-
   <div className='review-component'>
- 
 
   <div className='review'>
   
@@ -117,19 +113,11 @@ const Review = (props) => {
        
         <Button id='btn1' onClick={reviewHandle}>Add</Button>
         </Grid>
-        
-        
-        </div>
-        
+  </div>
   </div>
   <div className='rented-component'>
         <Rentedbooks/>
-    
-  
    </div>
    </div>
-)
-}
-  
-
+)}
 export default Review

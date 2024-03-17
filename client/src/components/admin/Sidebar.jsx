@@ -15,10 +15,7 @@ import LogoutOutlined from '@mui/icons-material/LogoutOutlined';
 import { Divider, ListItemIcon } from '@mui/material';
 
 
-
-
 const drawerWidth = 200;
-
 
 function Sidebar() {
 
@@ -73,21 +70,13 @@ const handleLogout = () => {
               
             </ListItemButton>
             <Divider style={ {minWidth: "100%"}} />
-
-          
             </Link>
           </ListItem>
         
         ))}
       </List>
-      
-      
-     
     </div>
   );
-
-  
-
   return (
     <div className='container'>
     
@@ -109,12 +98,6 @@ const handleLogout = () => {
           {drawer}
         </Drawer>
         </Box>
-        
-        </div>
-      
-  )
-        }
-        
-       
-
+    </div>
+)}
 export default Sidebar;

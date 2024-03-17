@@ -32,8 +32,6 @@ useEffect(()=>{
     <Typography  variant='h6'>Publication year:{details.publication_year}</Typography><br/>
     <Typography  variant='h6'>Genre:{details.genre}</Typography><br/>
     <Typography  variant='h6'>ISBN number:{details.ISBN_number}</Typography><br/>
-    
-    
     </div>
     <div >
         
@@ -42,7 +40,5 @@ useEffect(()=>{
         </div>
         </div>
         </>
-  )
-}
-
+)}
 export default Unique

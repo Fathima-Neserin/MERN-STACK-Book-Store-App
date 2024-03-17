@@ -5,26 +5,19 @@ import {  useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 
-
-const LOGIN_URL='http://localhost:3001/auth/login'
+const LOGIN_URL='/auth/login'
 
 const Login = () => {
      const navigate= useNavigate();
      
      const userRef = useRef('');
 
-     
-
      const [credentials,setCredentials] = useState({
           username:'',
           pwd:'',
-          role:"User",
-          
-
+          role:"User",    
      })
      
-     
-    
      useEffect(()=>{
         
           userRef.current.focus();
@@ -38,7 +31,6 @@ const Login = () => {
      const handleSubmit = async (e) => {
           e.preventDefault();
          
-          
           try {
             
             const response = await axios.post(LOGIN_URL, credentials);
@@ -72,8 +64,6 @@ const Login = () => {
                   alert('No Server Response',err);
                   console.error(err)
               }}}
- 
-      
   
   return (
     <div className='App'>
@@ -116,14 +106,8 @@ const Login = () => {
          </Grid>
     <br />
     <br />     
-         
-          
-          
           </div>
           </div>
     
-  )
-}
-
-
+  )}
 export default Login

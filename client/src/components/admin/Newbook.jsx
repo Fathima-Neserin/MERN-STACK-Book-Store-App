@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 
+
 const Newbook = () => {
 
-  const navigate = useNavigate();  
+ const navigate = useNavigate();  
     
  const titleRef= useRef('');
-
 
  const [form,setForm]=useState({
   title: '',
@@ -26,7 +26,6 @@ const Newbook = () => {
   publication_year:''
 })
 
-
 useEffect(() => {
     titleRef.current.focus();
 },[])
@@ -36,7 +35,7 @@ const bookAddition = async(e) =>{
     e.preventDefault();
      
     try {
-        const response = await axios.post('http://localhost:3001/books/addBook',form)
+        const response = await axios.post('/books/addBook',form)
         if(response.data.message===`New book ${form.title} added`){
             alert(response.data.message)
             navigate('/admindash')
@@ -47,9 +46,7 @@ const bookAddition = async(e) =>{
         console.error(error)
         if (error.response) {
           console.error(error.response.data); 
-      }
-    }
-}
+      }}}
 
   return (
     <div className='newbook-container'>
@@ -223,12 +220,8 @@ const bookAddition = async(e) =>{
         <Button variant='standard' id='btn' onClick={bookAddition} size='large'>Add</Button>
         </Grid>  
         <br/>
-          
           </div>
           </div>
           </div>
-    
-  )
-}
-
+)}
 export default Newbook

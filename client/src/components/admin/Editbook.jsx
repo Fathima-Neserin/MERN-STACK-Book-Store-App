@@ -8,7 +8,6 @@ import CardMedia from '@mui/material/CardMedia';
 
 const Editbook = (props) => {
 
-    
  const [form,setForm]=useState({
     image:props?.data?.image ||  '',
     rental_period:props?.data?.rental_period || '',
@@ -19,7 +18,7 @@ const Editbook = (props) => {
     e.preventDefault();
  
      if(props.method==="put"){
-        await axios.put(`http://localhost:3001/books/updateBook/${props.data._id}`,form)
+        await axios.put(`/books/updateBook/${props.data._id}`,form)
        .then((res)=>{
          if(res.data.message==="Book updated successfully"){
          alert(res.data.message)
@@ -32,8 +31,6 @@ const Editbook = (props) => {
          console.error(error)
      })
        }}
-
-
   return (
     
         <div className='App'>
@@ -105,8 +102,6 @@ const Editbook = (props) => {
           />
           </Grid>
           <br/>
-         
-        
         <Grid item xs={12} sm={12} md={12}>
         <Button variant='standard' id='btn' size='large' onClick={updateHandle} >Update</Button>
         </Grid>  
@@ -114,8 +109,5 @@ const Editbook = (props) => {
           </Grid>
     </div>
     </div>
-    
-  )
-}
-
+    )}
 export default Editbook

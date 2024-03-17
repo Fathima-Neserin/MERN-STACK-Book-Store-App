@@ -5,11 +5,9 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 
 
-
 const Rentbook = (props) => {
 
  const bookRef= useRef('');
-
 
  const [form,setForm]=useState({
   title:props?.data?.title || '',
@@ -19,8 +17,6 @@ const Rentbook = (props) => {
   username:'',
   contact:''
 })
-
-
 
 useEffect(() => {
       bookRef.current.focus();
@@ -32,8 +28,8 @@ const rentHandle = async(e) => {
     console.log('bookId', props.data._id);
 
     if(props.method==="post"){
-       await axios.post(`http://localhost:3001/ReNtEd/rentBook/${props.data._id}`,form).then((res)=>{
-        console.log('backend res:',res.data)
+       await axios.post(`/ReNtEd/rentBook/${props.data._id}`,form).then((res)=>{
+        console.log('backend response:',res.data)
         if(res.data.message==="Book rented"){
         alert(res.data.message)
       window.location.reload(false)
@@ -145,8 +141,5 @@ const rentHandle = async(e) => {
           </div>
           </div>
     
-  )
-}
-
-
+  )}
 export default Rentbook

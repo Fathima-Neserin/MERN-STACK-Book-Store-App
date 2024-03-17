@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+
 const PrivateRoute = (props) => {
 
     const {Component} = props
@@ -15,7 +16,5 @@ const PrivateRoute = (props) => {
     })
   return (
     <div><Component/></div>
-  )
-}
-
+  )}
 export default PrivateRoute

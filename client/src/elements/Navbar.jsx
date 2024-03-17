@@ -7,9 +7,6 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
 
-
-
-
 const Navbar = () => {
   return (
     <Box>
@@ -31,7 +28,5 @@ const Navbar = () => {
     </AppBar>
   
 </Box>
-  )
-}
-
+  )}
 export default Navbar

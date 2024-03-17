@@ -6,11 +6,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 
-
-const SIGNUP_URL=('http://localhost:3001/user/signup')
-
-
-
+const SIGNUP_URL=('/user/signup')
 
 const Signup = () => {
    
@@ -18,7 +14,6 @@ const Signup = () => {
 
   const nameRef= useRef();
   
- 
   const [details,setDetails] = useState({
     person:'',
     email:'',
@@ -28,9 +23,6 @@ const Signup = () => {
     role: "User"
   })
 
- 
-
- 
   useEffect(()=>{
 
       nameRef.current.focus();
@@ -91,7 +83,6 @@ const Signup = () => {
         alert('Signup failed')
       }
 
-      
     } catch (error) {
       console.error(error)
     }
@@ -100,7 +91,6 @@ const Signup = () => {
   return (
     <div className='App'>
     <br/>
-
     <Typography variant='h3' className='head2' >SignUp Form</Typography>
     <br></br>
     <div className='styleform'>
@@ -178,10 +168,9 @@ const Signup = () => {
         label='Role' 
         required 
         type='search'
-        // onChange={changeHandler}
+        disabled
         value={details.role}
         name='role'
-        
         >
         
         </TextField>
@@ -195,8 +184,5 @@ const Signup = () => {
           </Grid>
           </div>
           </div>
-          )
-  }
-
-
+)}
 export default Signup

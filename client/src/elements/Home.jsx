@@ -8,12 +8,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-
 const Home = () => {
     const [book,setBook] = useState([]);
 
 useEffect(()=>{
-    axios.get('http://localhost:3001/books').then((res)=>{
+    axios.get('/books').then((res)=>{
       console.log(res.data);
       setBook(...book,res.data);
     })
@@ -27,16 +26,12 @@ useEffect(()=>{
 </div>
 <Typography variant='h3' className='head5' >Latest Collections</Typography>
 <br/>
-
-
 <Box>
   
   <div id='imglist' className='custom-imglist'>
     
 <ImageList cols={5}  >
 {book.map((val,i) => (
-  
-  
 <Link id='imglist' key={i} className='img-link' to={`/unique/${val._id}`}>
   <ImageListItem key={i}  ><br/>
     
@@ -44,23 +39,15 @@ useEffect(()=>{
       src={`${val.image}`}
       loading="lazy"
     />
-    
     <ImageListItemBar
       subtitle={<span>by: {val.author}</span>}
-      
-    />
-    
+      />
   </ImageListItem>
-  </Link>
-  
-  
+  </Link> 
 ))}
 </ImageList> 
-
 </div>
 </Box>
 </div>
-  )
-}
-
+  )}
 export default Home

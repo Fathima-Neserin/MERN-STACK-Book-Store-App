@@ -63,6 +63,13 @@ const newConnection = async() =>{
        console.log(error);
        }
 }
+// serve static files
+app.use(express.static(path.join(__dirname , './client/build')));
+app.get('*', function (_, res){
+    res.sendFile(path.join(__dirname, './client/build/index.html'), function(error){
+        res.status(500).send(error);
+    })
+})
 
 const PORT = process.env.PORT 
 

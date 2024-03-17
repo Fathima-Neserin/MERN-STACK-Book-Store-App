@@ -20,7 +20,7 @@ const  Profile = () => {
 
   useEffect(()=>{
 
-    axios.get(`http://localhost:3001/user/${id}`).then((res)=>{
+    axios.get(`/user/${id}`).then((res)=>{
       console.log(res.data);
       setUser(res.data);
     })
@@ -28,7 +28,6 @@ const  Profile = () => {
       console.error('Error fetching user data:', error);
     });
   },[id])
-
   
   const updateProfile = (val) => {
     console.log("update clicked",val);

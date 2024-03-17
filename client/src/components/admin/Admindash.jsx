@@ -28,9 +28,8 @@ const Admindash = () => {
 
   const [bookdata, setBook] = useState([]);
 
-  
   useEffect(() => {
-    axios.get('http://localhost:3001/books').then((res) => {
+    axios.get('/books').then((res) => {
       setBook(res.data);
     });
   }, []);
@@ -39,11 +38,10 @@ const Admindash = () => {
     console.log("update clicked",val);
     setUpdate(true);
     setSingleValue(val);
- 
-  }
+ }
   
  function deleteBook(id){
-   axios.delete('http://localhost:3001/books/removeBook/'+id).then((res)=>{
+   axios.delete('/books/removeBook/'+id).then((res)=>{
    alert(res.data.message)
     window.location.reload(false);
    })
@@ -109,25 +107,17 @@ const Admindash = () => {
   ))}
 
 </div>
-
-
       </AccordionDetails>
     </Accordion>
     <br/><br/>
     <Button id='btn' className='btns' size='medium' onClick={()=>updateBook((val))}>Update</Button> 
     <span style={{ marginRight: '10px' }}></span>
     <Button id='btn' className='btns' size='medium' onClick={()=>{deleteBook((val._id))}}>Delete</Button> 
-    
-     </div>
-    </CardContent>
-    
     </div>
-    
-
+    </CardContent>
+    </div>
   </Card>
   </Grid>
-  
-  
   ))}
   </Grid>
   </div>
