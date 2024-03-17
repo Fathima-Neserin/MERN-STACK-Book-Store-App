@@ -3,7 +3,7 @@ const router=express.Router();
 
 const rentedController=require('../controller/rentedController');
 
-router.route('/')
+router.route('/:username')
       .get(rentedController.rentedBooks)
 
 router.route('/:id')

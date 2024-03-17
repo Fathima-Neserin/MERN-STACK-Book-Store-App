@@ -2,17 +2,8 @@ import React, { useState } from 'react'
 import Rentedbooks from './Rentedbooks'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Sidebar from './Sidebar'
 import axios from "axios";
-import { Button, Divider, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
-import Rentbook from "./Rentbook";
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Button, Grid } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
 
@@ -108,7 +99,7 @@ const Review = (props) => {
            
            value={fields.reviewText}
         />
-        <br/>
+        <br/><br/>
         <TextField
         variant='standard'
         fullWidth

@@ -15,5 +15,8 @@ router.route('/signup')
 router.route('/editUser/:id')     
       .put(userController.editUser) 
 
-
+router.route('/removeUser/:id')
+      .delete(userController.removeUser
+            
+            )
  module.exports=router;     

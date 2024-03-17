@@ -1,12 +1,14 @@
 const RentedBooks=require('../model/rentedModel')
+const Books = require('../model/bookModel')
 
 // CRUD operations
 
 const rentedBooks = async (req, res) => {
     try {
-        const books = await RentedBooks.find();
+        const { username } = req.params;
+        const books = await RentedBooks.find({ username: username });
         if(!books || books.length===0){
-             return res.status(204).json({"message": "No rented books found"});
+             return res.status(204).json({"message": "No rented books found for this user"});
         }
         res.status(200).json(books);
     } catch (error) {
@@ -45,11 +47,19 @@ const rentBook = async(req,res) => {
             image:req.body.image,
             title: req.body.title,
             author: req.body.author,
+            libraryId:req.body.libraryId,
+            username:req.body.username,
             bookId: bookId
         })
+        const updateBook = await Books.findById(bookId)
+        updateBook.rented_count = (updateBook.rented_count || 0) + 1;
+        await updateBook.save();
+
+
         res.status(200).json({"message":"Book rented"})
     } catch (error) {
         res.status(500).json({error:error.message})
+        console.error(error)
     }
 }
 const reviewBook = async (req, res) => {

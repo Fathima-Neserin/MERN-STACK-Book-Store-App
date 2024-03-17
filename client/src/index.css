@@ -110,13 +110,15 @@ code {
 }
 
 .details{
-  margin-top: 8%;
-  margin-right: 55%;
+  margin-top: 10%;
   max-height: 100%;
-  overflow: hidden;
-  float: right;
+  margin-left: 8%;
 }
 
+.unique-container{
+  display: flex;
+}
+ 
 #title{
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -260,4 +262,17 @@ code {
 .profile-component {
   margin: 12% ;
   
+}
+
+.card-margin-admin{
+  margin-top: 3%;
+  margin-left: 15%;
+}
+
+.newbook-container{
+  margin-bottom: 5%;
+}
+
+.users-container{
+  margin: 5%;
 }

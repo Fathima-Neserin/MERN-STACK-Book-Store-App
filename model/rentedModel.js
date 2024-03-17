@@ -10,7 +10,14 @@ const reviewSchema = new mongoose.Schema({
 });
 
 const rentedModel = new mongoose.Schema({
-    
+    libraryId:{
+        type : Number,
+        required : true
+    },
+    username:{
+        type : String,
+        required : true
+    },
     image:{
         type : String 
     },
@@ -20,7 +27,10 @@ const rentedModel = new mongoose.Schema({
     author:{
         type : String 
     },
-    reviews : [reviewSchema]
+    reviews : [reviewSchema],
+    contact : {
+        type : Number
+    }
 })
 
 const rentedData= mongoose.model('rentedbook',rentedModel);

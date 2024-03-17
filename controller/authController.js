@@ -9,10 +9,10 @@ const handleLogin = async (req, res) => {
    
   try {
     
-    const { username, pwd } = req.body;
+    const { username, pwd, _id} = req.body;
     const user = await Users.findOne({ username });
-    const id = user._id.toString();
-    const role = user.role;
+    // const id = user._id.toString();
+    // const role = user.role;
     if (!user) {
       return res.status(404).send('User not found!!!');
     }
@@ -21,6 +21,8 @@ const handleLogin = async (req, res) => {
     if (!user.password) {
       return res.status(401).send('User does not have a password set');
     }
+    const id = user._id.toString();
+    const role = user.role;
     console.log('Password from request:', pwd);
     console.log('User password from database:', user.password);
 

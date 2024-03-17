@@ -3,16 +3,12 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import Sidebar from './Sidebar'
 import axios from "axios";
 import { Button, Divider, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
-import Rentbook from "./Rentbook";
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import TextField from '@mui/material/TextField';
 import Review from './Review';
 
 
@@ -28,7 +24,7 @@ const Rentedbooks = () => {
    
   const [expanded, setExpanded] = React.useState(false);
 
-
+ const userName = sessionStorage.getItem('username');
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -36,8 +32,9 @@ const Rentedbooks = () => {
 
 
    useEffect(()=>{
-       axios.get('http://localhost:3001/ReNtEd').then((res)=>{
+       axios.get(`http://localhost:3001/ReNtEd/${userName}`).then((res)=>{
         console.log("Rented Data:", rented);
+        console.log('Response from server:', res.data);
 
          setRented(res.data);
        })
@@ -51,13 +48,13 @@ const Rentedbooks = () => {
   }
 
   let finalJSX=(
-    
+    <>
   
     <div className="card2-margin">
       <Grid container >
       {rented.map((val,i)=>(
         <Grid item key={i} md={2}>
-      <Card key={i} sx={{ width: '95%' }} className="card">
+      <Card  sx={{ width: '95%' }} className="card">
        
       <CardMedia 
        component="img"
@@ -109,8 +106,10 @@ const Rentedbooks = () => {
     
     ))}
     </Grid>
+    
   
      </div>
+     </>
      
   )
   if(review) finalJSX= <Review method="put" data={singleValue}/>

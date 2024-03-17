@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import '../App.css'
 import { Button, Grid,  TextField,  Typography } from '@mui/material'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 
 
 
@@ -44,17 +43,21 @@ const Login = () => {
             
             const response = await axios.post(LOGIN_URL, credentials);
             console.log(credentials)
+
             const accessToken = response?.data?.token;
             sessionStorage.setItem('Token',accessToken)
             const accessID = response?.data?.id;
             sessionStorage.setItem('ID',accessID)
+            const accessUserName = response?.data?.username
+            sessionStorage.setItem('username',accessUserName)
+
             const role = response?.data?.role;
               if (role[0] ==="User" ) {
                  // If the role is "User", navigate to UserDashboard
                  alert('Login Successful...')
                  navigate('/userdash');
                  
-               } else if (role[0] === "Admin" && accessToken && accessID) {
+               } else if (role[0] === "Admin") {
                  // If the role is "Admin", navigate to AdminDashboard
                  alert('Login Successful...')
                  navigate('/admindash');

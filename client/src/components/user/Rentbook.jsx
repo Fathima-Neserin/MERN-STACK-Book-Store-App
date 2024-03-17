@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Typography , Grid, TextField , Button} from '@mui/material'
-import Sidebar from './Sidebar'
 import axios from 'axios';
-import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 
@@ -18,8 +16,8 @@ const Rentbook = (props) => {
   author:props?.data?.author || '',
   image:props?.data?.image || '',
   libraryId:'',
-  userName:'',
-  contactNo:''
+  username:'',
+  contact:''
 })
 
 
@@ -34,8 +32,8 @@ const rentHandle = async(e) => {
     console.log('bookId', props.data._id);
 
     if(props.method==="post"){
-       await axios.post(`http://localhost:3001/ReNtEd/rentBook/${props.data._id}`,form)
-      .then((res)=>{
+       await axios.post(`http://localhost:3001/ReNtEd/rentBook/${props.data._id}`,form).then((res)=>{
+        console.log('backend res:',res.data)
         if(res.data.message==="Book rented"){
         alert(res.data.message)
       window.location.reload(false)
@@ -70,6 +68,7 @@ const rentHandle = async(e) => {
          }}
          value={form.title}
          inputRef={bookRef}
+         disabled
         />
         </Grid>
         <Grid item xs={12} sm={12} md={12}>
@@ -83,6 +82,7 @@ const rentHandle = async(e) => {
           setForm({...form,author:e.target.value})
         }}
         value={form.author}
+        disabled
         />
         </Grid>
         
@@ -93,12 +93,6 @@ const rentHandle = async(e) => {
         component="img"
          sx={{ height: '8%' }}
          image={form.image}
-         onChange={(e) => {
-           setForm({...form,image:e.target.value})
-          }}
-          
-          value={form.image}
-          
        />
        </Card>
        <br/>
@@ -120,13 +114,13 @@ const rentHandle = async(e) => {
         <TextField 
         variant='standard' 
         fullWidth
-        label='Name'
+        label='Username'
         required 
         type='text'
         onChange={(e) => {
-          setForm({...form,userName:e.target.value})
+          setForm({...form,username:e.target.value})
         }}
-        value={form.userName}
+        value={form.username}
         />
         </Grid>  
         <Grid item xs={12} sm={12} md={12}>
@@ -137,9 +131,9 @@ const rentHandle = async(e) => {
         required 
         type='text'
         onChange={(e) => {
-          setForm({...form,contactNo:e.target.value})
+          setForm({...form,contact:e.target.value})
         }}
-        value={form.contactNo}
+        value={form.contact}
         />
         </Grid>
         

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
-import { TextField, Typography } from '@mui/material'
+import {  Typography } from '@mui/material'
 import '../index.css'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
@@ -23,9 +23,9 @@ useEffect(()=>{
   return (
     <>
     
-    
+    <div className='unique-container'>
     <img src={details.image} className='img2' />
-    <section className='details' id='title'>
+    <div className='details' id='title'>
     <Typography variant='h4'  >{details.title}</Typography>
     <br/>
     <Typography  variant='h6'>Author:{details.author}</Typography><br/>
@@ -34,11 +34,12 @@ useEffect(()=>{
     <Typography  variant='h6'>ISBN number:{details.ISBN_number}</Typography><br/>
     
     
-    </section>
+    </div>
     <div >
         
         <Navbar/>
         
+        </div>
         </div>
         </>
   )

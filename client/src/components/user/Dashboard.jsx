@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
@@ -8,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Sidebar from './Sidebar'
 import axios from "axios";
 import { Divider, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
 import Rentbook from "./Rentbook";
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -57,18 +55,18 @@ const Dashboard = () => {
       <Grid container >
       {bookdata.map((val,i)=>(
         <Grid item key={i} md={3}>
-      <Card key={i} sx={{ width: '75%' , height:'100%' }} className="card2">
+      <Card key={i} sx={{ width: '75%' , height:'100%' }}>
 
        <Button onClick={()=>rentBook(val)} >
       <CardMedia 
        component="img"
-        sx={{ height: '45vh' }}
+        sx={{ height: '45vh' , width: "90%" }}
         image={val.image}
       />
       </Button>
       <div className="card-content">
       <CardContent> 
-      <div style={{ maxHeight: '6em', overflow: 'hidden' }}>
+      <div style={{ maxHeight: '10em', overflow: 'hidden' }}>
         <Typography gutterBottom variant="h6" component="div" >
           Name : {val.title}
         </Typography>
@@ -87,7 +85,7 @@ const Dashboard = () => {
           Pay(late fee) : {val.pay}
         </Typography><br/>
         <div>
-        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} >
+        <Accordion expanded={expanded === `panel1${i}`} onChange={handleChange(`panel1${i}`)} >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           >

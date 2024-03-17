@@ -2,12 +2,12 @@ const mongoose=require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
     email: {
-        type: String,
-        required: true,
+        type: String
+        
     },
     reviewText: {
-        type: String,
-        required: true,
+        type: String
+        
     },
 });
 
@@ -23,26 +23,37 @@ const bookModel = new mongoose.Schema({
     },
     author : {
         type : String,
-        required : true
+        required:true
     },
     publication_year : {
         type : Number,
         required : true
     },
     genre : {
-        type : String,
-        required : true
+        type : String
     },
     ISBN_number : {
-        type : Number,
-        required : true
+        type : Number
     },
     reviews : [reviewSchema],
     status : {
         type : String
     },
     pay : {
+        type : String,
+    },
+    rented_count : {
+        type : Number
+    },
+    languages : [{
         type : String
+    }],
+    rental_period : {
+        type : String
+    },
+    description : {
+        type : String,
+        
     }
 })
 

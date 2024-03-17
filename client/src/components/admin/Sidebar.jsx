@@ -8,12 +8,12 @@ import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import '../../index.css'
 import { Link, useNavigate } from 'react-router-dom';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
-import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import HomeOutlined from '@mui/icons-material/HomeOutlined';
+import BookmarkAddOutlined from '@mui/icons-material/BookmarkAddOutlined';
+import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
+import LogoutOutlined from '@mui/icons-material/LogoutOutlined';
 import { Divider, ListItemIcon } from '@mui/material';
+
 
 
 
@@ -26,29 +26,24 @@ function Sidebar() {
 
   const listData = [{
     page:'Dashboard',
-    link:'/userdash',
-    icon:<HomeOutlinedIcon/>
+    link:'/admindash',
+    icon:<HomeOutlined/>
    },
    { 
-    page:'Rent Book',
-    link:'/rent',
-    icon:<BookmarkAddOutlinedIcon/>
+    page:'New Book',
+    link:'/new',
+    icon:<BookmarkAddOutlined/>
   },
   {
-   page:'Rented Books',
-   link:'/Rented',
-   icon:<BookmarksOutlinedIcon/>
+   page:'Users',
+   link:'/Users',
+   icon:<PeopleOutlinedIcon/>
   },
-   {
-    page: 'Profile',
-    link:'/profile/:id',
-    icon:<AccountCircleOutlinedIcon/>
-    },
-    {
+  {
     page: 'Logout',
      link: '/login',
-     icon:<LogoutOutlinedIcon/>
-}];
+     icon:<LogoutOutlined/>
+  }];
   
 const handleLogout = () => {
   
@@ -72,21 +67,19 @@ const handleLogout = () => {
           <ListItem key={i} >
             <Link to={val.link} className='side-link' >
             <ListItemButton className='side-text' onClick={val.page === 'Logout' ? handleLogout : null}>
-              <ListItemIcon>{val.icon}</ListItemIcon>
+            <ListItemIcon>{val.icon}</ListItemIcon>
+
               <ListItemText primary={val.page} />
               
-              
             </ListItemButton>
-            
-            <Divider style={{ height: 'calc(100% - 56px)', minWidth:'100%', marginTop: 'auto' }} />
+            <Divider style={ {minWidth: "100%"}} />
+
+          
             </Link>
           </ListItem>
-      
         
         ))}
       </List>
-      
-      
       
       
      

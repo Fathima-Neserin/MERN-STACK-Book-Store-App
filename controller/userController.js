@@ -10,8 +10,8 @@ const Users=require('../model/userModel')
 // CRUD operations
 
 const getAllUsers = asyncHandler(async (req, res) => {
-    // Get all users from MongoDB
-    const users = await Users.find().select('-password').lean()
+     // Get all users with role "User" from MongoDB
+     const users = await Users.find({ role: "User" }).select('-password').lean()
 
     // If no users 
     if (!users?.length) {
@@ -97,9 +97,24 @@ const editUser = asyncHandler( async(req, res) => {
         res.status(500).json({ error: error.message });
     }
 })
+
+
+const removeUser = async (req, res) => {
+
+    try {
+        const id = req.params.id;
+        const deleteUser = await Users.findById(id);
+        const result = await Users.findByIdAndDelete(id);
+        res.status(200).json({'message': `User deleted successfully`});
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports={
     getAllUsers,
     getOneUser,
     createNewUser,
-    editUser
+    editUser,
+    removeUser
 }
