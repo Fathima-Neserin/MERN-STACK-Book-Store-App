@@ -25,7 +25,7 @@ function App() {
        <Route path='/' element={<Common child={<Home/>}/>}/>
        <Route path='/signup' element={<Common child={<Signup/>}/>}/>
        <Route path='/login' element={<Common child={<Login/>}/>}/>
-       <Route path ='/unique/:id' element={<Unique/>}/>
+       <Route path ='/books/:id' element={<Unique/>}/>
        <Route path='/userdash' element={<PrivateRoute Component = {Dashboard}/>}/>
        <Route path='/rent' element={<PrivateRoute Component = {Rentbook}/>}/>
        <Route path='/profile/:id' element={<PrivateRoute Component = {Profile}/>}/>

@@ -13,7 +13,7 @@ const {id} = useParams();
 
 useEffect(()=>{
 
-    axios.get(`books/${id}`).then((res)=>{
+    axios.get(`/books/${id}`).then((res)=>{
       console.log(res.data);
       setDetails(res.data)
     })

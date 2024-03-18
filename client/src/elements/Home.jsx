@@ -32,7 +32,7 @@ useEffect(()=>{
     
 <ImageList cols={5}  >
 {book.map((val,i) => (
-<Link id='imglist' key={i} className='img-link' to={`/unique/${val._id}`}>
+<Link id='imglist' key={i} className='img-link' to={`/books/${val._id}`}>
   <ImageListItem key={i}  ><br/>
     
     <img
