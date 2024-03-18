@@ -13,7 +13,7 @@ const {id} = useParams();
 
 useEffect(()=>{
 
-    axios.get(`http://localhost:3001/books/${id}`).then((res)=>{
+    axios.get(`books/${id}`).then((res)=>{
       console.log(res.data);
       setDetails(res.data)
     })
